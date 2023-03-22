@@ -1,0 +1,34 @@
+name: "Code scanning - action"
+
+on: [push]
+
+jobs:
+  CodeQL-Build:
+  runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      security-events: write
+      pull-requests: read
+
+    steps:
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.102
+
+    # CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@main
+      with:
+        languages: python
+        config-file: ./.github/workflows/scan.yaml
+
+      
+    - name: Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Installing dependencies
+      run: pip install -r requirements.txt

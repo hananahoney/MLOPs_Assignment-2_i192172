@@ -4,7 +4,8 @@ on: [push]
 
 jobs:
   CodeQL-Build:
-  runs-on: ubuntu-latest
+
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -17,18 +18,22 @@ jobs:
       with:
         dotnet-version: 7.0.102
 
-    # CodeQL tools for scanning.
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@main
       with:
         languages: python
         config-file: ./.github/workflows/test1.yaml
-
       
-    - name: Python environment
+    - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
 
-    - name: Installing dependencies
+    - name: Install dependencies
       run: pip install -r requirements.txt
+
+    - name: Build Python project
+      run: python mlops.ipynb build

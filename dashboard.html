@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                $.get('/dashboard', function(data) {
+                    $('#symbol').text(data['01. symbol']);
+                    $('#price').text(data['05. price']);
+                    $('#change').text(data['09. change']);
+                });
+            }, 60000);  // 60 seconds
+        });
+    </script>
+</head>
+<body>
+    <h1>Stock Dashboard</h1>
+    <p>Symbol: <span id="symbol">{{ data['01. symbol'] }}</span></p>
+    <p>Price: <span id="price">{{ data['05. price'] }}</span></p>
+    <p>Change: <span id="change">{{ data['09. change'] }}</span></p>
+</body>
+</html>

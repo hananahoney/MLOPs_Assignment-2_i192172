@@ -22,7 +22,7 @@ jobs:
       uses: github/codeql-action/init@main
       with:
         languages: python
-        config-file: ./.github/workflows/scan.yaml
+        config-file: ./.github/workflows/test1.yaml
 
       
     - name: Python environment

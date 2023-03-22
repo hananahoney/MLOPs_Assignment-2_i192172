@@ -1,5 +1,6 @@
-pip install flask
-pip install requests
-pip install pandas
-pip install scikit-learn
-pip install yfinance
+flask==2.2.3
+requests==2.28.2
+yfinance==0.2.13
+pandas==1.5.3
+scikit-learn==1.2.1
+scipy==1.10.1

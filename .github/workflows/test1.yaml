@@ -35,5 +35,11 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+#     - name: Build Python project
+#       run: python mlops.ipynb build
+      
     - name: Build Python project
-      run: python mlops.ipynb build
+      run: |
+        jupyter nbconvert --to script mlops.ipynb
+        python mlops.py build
+
